@@ -8,30 +8,30 @@
 
 server = process.env.PORT || 8000;
 
-console.log('checking........');
-// const io = require("socket.io")(server, {
-//     cors: {
-//       origin: "*",
-//       credentials: true
-//     }
-//   });
+
+const io = require("socket.io")(server, {
+    cors: {
+      origin: "*",
+      credentials: true
+    }
+  });
 
 
-// const users = {};
+const users = {};
 
-// io.on('connection', socket => {
+io.on('connection', socket => {
 
 
-//     socket.on('new-user-joined', name => {
-//         users[socket.id] = name;
-//         socket.broadcast.emit('userJoined', name, users[socket.id]);
-//     })
+    socket.on('new-user-joined', name => {
+        users[socket.id] = name;
+        socket.broadcast.emit('userJoined', name, users[socket.id]);
+    })
 
-//     socket.on('send', message => {
-//         socket.broadcast.emit('receive', {message: message, name: users[socket.id]})
-//     });
+    socket.on('send', message => {
+        socket.broadcast.emit('receive', {message: message, name: users[socket.id]})
+    });
 
-//     socket.on('disconnect', () => {
-//         socket.broadcast.emit('left', users[socket.id]);
-//     })
-// })
+    socket.on('disconnect', () => {
+        socket.broadcast.emit('left', users[socket.id]);
+    })
+})
