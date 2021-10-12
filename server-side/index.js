@@ -6,7 +6,7 @@ var app = express();
 
 var server = app.listen(process.env.PORT || 8000);
 
-server = process.env.PORT || 8000;
+// server = process.env.PORT || 8000;
 
 app.get('/', function (req, res) {
     res.send('../index.html')
