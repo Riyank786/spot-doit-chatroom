@@ -9,7 +9,7 @@ var server = app.listen(process.env.PORT || 8000);
 // server = process.env.PORT || 8000;
 
 app.get('/', function (req, res) {
-    res.sendFile('../index.html')
+    res.sendFile('../index.html', {root: __dirname })
   })
 
 const io = require("socket.io")(server, {
