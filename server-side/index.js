@@ -1,13 +1,16 @@
 
 // const FIREBASE_TOKEN = '1//0gMvCOvrSwdcLCgYIARAAGBASNwF-L9IrfriUjKj-xFwq30DcruouJyrjMTqSriNRpl4GsAuuNwZ6besjLssElAft-Vqylcn0hsA';
 
-// var express = require('express');
-// var app = express();
+var express = require('express');
+var app = express();
 
-// var server = app.listen(process.env.PORT || 8000);
+var server = app.listen(process.env.PORT || 8000);
 
 server = process.env.PORT || 8000;
 
+app.get('/', function (req, res) {
+    res.send('../index.html')
+  })
 
 const io = require("socket.io")(server, {
     cors: {
