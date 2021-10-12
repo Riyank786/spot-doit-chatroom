@@ -49,12 +49,14 @@ socket.on('left', userName =>{
 
 form.addEventListener('submit', (e) => {
 
+    if(messageInp.value != ''){
     e.preventDefault();
     const message = messageInp.value;
     appendMessage(`${message}`, 'right');
     messageInp.value = '';
     socket.emit('send', message);
     messageContainer.scrollTop = messageContainer.scrollHeight;
+    }
 
 })
 
